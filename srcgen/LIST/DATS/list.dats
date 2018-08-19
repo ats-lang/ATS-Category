@@ -5,10 +5,10 @@
 //
 (* ****** ****** *)
 //
-// (*
+(*
 abst0ype item_t0ype
 abst0ype itemlst_t0ype(int)
-// *)
+*)
 //
 (* ****** ****** *)
 //
@@ -243,6 +243,30 @@ foldright$fopr(item, res): res
 //
 (* ****** ****** *)
 
+implement
+{res}//tmp
+foldleft(xs, r0) =
+  loop(xs, r0) where
+{
+  var xs: itemlst = xs
+  fun
+  loop
+  (xs: &itemlst >> _, r0: res): res =
+  (
+    if
+    isneqz(xs)
+    then
+    let
+      val x0 = uncons<>(xs)
+    in
+      loop(xs, foldleft$fopr(r0, x0))
+    end
+    else r0 // end of [if]
+  )
+} (* end of [foldleft] *)
+
+(* ****** ****** *)
+
 extern
 fun{}
 length{n:int}(itemlst(n)): int(n)
@@ -263,11 +287,11 @@ append{n1,n2:int}
 
 extern
 fun{}
-reverse{n:int}(itemlst(n)): int(n)
+reverse{n:int}(itemlst(n)): itemlst(n)
 extern
 fun{}
 rappend{n1,n2:int}
-(itemlst(n1), itemlst(n2)): int(n1+n2)
+(itemlst(n1), itemlst(n2)): itemlst(n1+n2)
 
 (* ****** ****** *)
 

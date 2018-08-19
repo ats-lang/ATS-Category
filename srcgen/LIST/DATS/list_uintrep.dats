@@ -36,11 +36,21 @@ fprint_item<>
 //
 extern
 fun{}
-make_uint
+encode_uint
   (xs: uint): itemlst
 //
 implement
-make_uint<>(xs) = xs
+encode_uint<>(xs) = xs
+//
+(* ****** ****** *)
+//
+extern
+fun{}
+decode_uint
+  (xs: itemlst): uint
+//
+implement
+decode_uint<>(xs) = xs
 //
 (* ****** ****** *)
 

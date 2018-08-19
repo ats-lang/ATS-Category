@@ -11,6 +11,27 @@
 //
 (* ****** ****** *)
 
+#staload U = $UINTREP
+
+(* ****** ****** *)
+
+extern
+fun
+my_fprint_uint:
+fprint_type(uint)
+implement
+my_fprint_uint
+  (out, u0) =
+  fprint(out, ys) where
+{
+  val xs = $U.encode_uint(u0)
+  val ys = $U.reverse(xs)
+  val u1 = $U.decode_uint(ys)
+  implement $U.fprint_sep<>(out) = ()
+}
+
+(* ****** ****** *)
+
 implement
 main0() =
 {
@@ -19,10 +40,10 @@ val () =
 println!
 "Hello from [test01]!"
 //
-val xs =
-$UINTREP.make_uint(12345u)
+val () =
+my_fprint_uint(stdout_ref, 12345u)
 //
-val () = println! ("xs = ", xs)
+val () = fprint_newline(stdout_ref)
 //
 } (* end of [main0] *)
 
