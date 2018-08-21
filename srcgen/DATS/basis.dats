@@ -39,6 +39,7 @@ is_cons(xs: xs): bool
 
 (* ****** ****** *)
 
+(*
 extern
 fun
 {xs:t@ype}
@@ -46,6 +47,7 @@ fun
 {ys:t@ype}
 {y0:t@ype}
 listmap(xs: xs): ys
+*)
 
 (* ****** ****** *)
 //
